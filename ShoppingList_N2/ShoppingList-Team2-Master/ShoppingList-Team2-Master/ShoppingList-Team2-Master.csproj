@@ -226,9 +226,13 @@
     <Compile Include="Migrations\201609081417079_userIdInttoString.Designer.cs">
       <DependentUpon>201609081417079_userIdInttoString.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609091528018_removeContentField.cs" />
-    <Compile Include="Migrations\201609091528018_removeContentField.Designer.cs">
-      <DependentUpon>201609091528018_removeContentField.cs</DependentUpon>
+    <Compile Include="Migrations\201609091744032_DisplayNameColor.cs" />
+    <Compile Include="Migrations\201609091744032_DisplayNameColor.Designer.cs">
+      <DependentUpon>201609091744032_DisplayNameColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609121840123_somethingColin.cs" />
+    <Compile Include="Migrations\201609121840123_somethingColin.Designer.cs">
+      <DependentUpon>201609121840123_somethingColin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -335,8 +339,14 @@
     <EmbeddedResource Include="Migrations\201609081417079_userIdInttoString.resx">
       <DependentUpon>201609081417079_userIdInttoString.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609091744032_DisplayNameColor.resx">
+      <DependentUpon>201609091744032_DisplayNameColor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609091528018_removeContentField.resx">
       <DependentUpon>201609091528018_removeContentField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609121840123_somethingColin.resx">
+      <DependentUpon>201609121840123_somethingColin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
