@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ShoppingList_Team2_Master.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ShoppingList_Team2_Master.Controllers
 {
@@ -46,10 +47,14 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,UserId,Name,Color,CreatedUtc,ModifiedUtc")] ListModel listModel)
+        public ActionResult Create([Bind(Include = "ID,Name,Color")] ListModel listModel)
         {
+            
             if (ModelState.IsValid)
             {
+                listModel.UserId = User.Identity.GetUserId();
+                listModel.CreatedUtc = DateTime.UtcNow;
+                listModel.ModifiedUtc = DateTime.UtcNow;
                 db.ListModels.Add(listModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +83,12 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,UserId,Name,Color,CreatedUtc,ModifiedUtc")] ListModel listModel)
+        public ActionResult Edit([Bind(Include = "ID,Name,Color")] ListModel listModel)
         {
             if (ModelState.IsValid)
             {
+                listModel.UserId = User.Identity.GetUserId();
+                listModel.ModifiedUtc = DateTime.UtcNow;
                 db.Entry(listModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
