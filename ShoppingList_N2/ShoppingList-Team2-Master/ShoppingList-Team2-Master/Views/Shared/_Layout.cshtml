@@ -19,7 +19,7 @@
     </script>
 </head>
 <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,14 +29,14 @@
                 </button>
             </div>
             <!-- BEGIN TEMPORARY DEV LINKS-->
-            @if (Request.IsAuthenticated) <!--Links only show for authenticated users-->
+            @if (Request.IsAuthenticated)
             {
-           
-                    @Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("ListModels", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
-     
+
+                @Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ListModels", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
+
             }
-                    <!-- END TEMPORARY DEV LINKS-->
+            <!-- END TEMPORARY DEV LINKS-->
 
             <div class="container">
 
@@ -44,7 +44,7 @@
 
             </div>
 
-                </div>
+        </div>
     </div>
     <div class="container body-content">
         @RenderBody()

@@ -48,10 +48,14 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note,CreatedUtc")] ShoppingListItemModel shoppingListItemModel)
+        public ActionResult Create([Bind(Include = "ID,Name,IsChecked,Purchased,Priority,Note,CreatedUtc")] ShoppingListItemModel shoppingListItemModel)
         {
+            shoppingListItemModel.IsChecked = false;
+            shoppingListItemModel.Purchased = false;
+            shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
+
             if (ModelState.IsValid)
-            {
+            {                
                 db.ShoppingListItemModels.Add(shoppingListItemModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +86,7 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note,CreatedUtc")] ShoppingListItemModel shoppingListItemModel)
+        public ActionResult Edit([Bind(Include = "ID,Name,IsChecked,Purchased,Priority,Note,CreatedUtc")] ShoppingListItemModel shoppingListItemModel)
         {
             if (ModelState.IsValid)
             {

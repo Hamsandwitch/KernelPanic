@@ -4,18 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-
 namespace ShoppingList_Team2_Master.Controllers
 {
     public class HomeController : Controller
     {
-        //GET 
         public ActionResult Index()
         {
-            if(Request.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "ListModels");
-            }
             return View();
         }
 
@@ -26,5 +20,11 @@ namespace ShoppingList_Team2_Master.Controllers
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
