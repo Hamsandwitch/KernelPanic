@@ -12,7 +12,7 @@ namespace ShoppingList_Team2_Master.Models
 
         public string Name { get; set; }
         
-
+        [Display(Name = "Color (Hexadecimal)")]
         public string Color { get; set; }
 
         [Display (Name = "Time of Creation")]
