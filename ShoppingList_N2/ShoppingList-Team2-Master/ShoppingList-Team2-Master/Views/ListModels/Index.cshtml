@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<ShoppingList_Team2_Master.Models.ListModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Lists</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Add New List", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.UserId == User.Identity.GetUserId())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+                        @Html.ActionLink("Details", "Details", new {id = item.ID}) |
+                        @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </table>
+}
+else
+{
+<p>Log in to see your lists!</p>
+}

@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace ShoppingList_Team2_Master.Models
+{
+    public class ListModel
+    {
+        public int ID { get; set; }
+
+        public string UserId { get; set; }
+
+        public string Name { get; set; }
+        
+
+        public string Color { get; set; }
+
+        [Display (Name = "Time of Creation")]
+        public DateTimeOffset CreatedUtc { get; set; }
+
+        [Display(Name = "Last Modified")]
+        public DateTimeOffset ModifiedUtc { get; set; }
+
+        //get list id and name
+        public override string ToString()
+        {
+            return $"[{ID} {Name}";
+        }
+        public virtual ICollection<ShoppingListItemModel> ShoppingListItems { get; set; }
+    }
+
+    
+}
