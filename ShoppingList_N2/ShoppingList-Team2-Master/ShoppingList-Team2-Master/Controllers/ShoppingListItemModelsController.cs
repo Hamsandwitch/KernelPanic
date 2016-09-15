@@ -48,12 +48,9 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,IsChecked,Purchased,Priority,Note,CreatedUtc")] ShoppingListItemModel shoppingListItemModel)
-        {
-            shoppingListItemModel.IsChecked = false;
-            shoppingListItemModel.Purchased = false;
+        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
+        {            
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
-
             if (ModelState.IsValid)
             {                
                 db.ShoppingListItemModels.Add(shoppingListItemModel);
@@ -86,8 +83,9 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,IsChecked,Purchased,Priority,Note,CreatedUtc")] ShoppingListItemModel shoppingListItemModel)
-        {
+        public ActionResult Edit([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
+        {           
+            shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {
                 db.Entry(shoppingListItemModel).State = EntityState.Modified;

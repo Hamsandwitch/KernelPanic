@@ -26,24 +26,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-            </div>
-            <!-- BEGIN TEMPORARY DEV LINKS-->
-            @if (Request.IsAuthenticated)
-            {
-
-                @Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })
+                </button>              
                 @Html.ActionLink("ListModels", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
-
-            }
-            <!-- END TEMPORARY DEV LINKS-->
-
-            <div class="container">
-
-                @Html.Partial("_LoginPartial")
-
+                @Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })                
             </div>
-
+            <div class="navbar-collapse collapse">
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </div>
     <div class="container body-content">
