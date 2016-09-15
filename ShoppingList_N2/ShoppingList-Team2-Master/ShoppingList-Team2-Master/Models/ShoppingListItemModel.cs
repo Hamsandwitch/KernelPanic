@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,25 +13,25 @@ namespace ShoppingList_Team2_Master.Models
           
      public class ShoppingListItemModel
      {          
-            [Key]
           public int ID { get; set; }
 
-           
-          public int ListId { get; set; }        
+            [HiddenInput(DisplayValue = false)]
+          public int ListId { get; set; }
 
           public string Name { get; set; }
 
-           
+            [HiddenInput(DisplayValue = false)]
           public bool IsChecked { get; set; }
 
-          
+            [HiddenInput(DisplayValue = false)]
           public bool Purchased { get; set; }         
 
           public Priority? Priority { get; set; }
 
           public string Note { get; set; }
-          
-          public DateTimeOffset CreatedUtc { get; set; }
+
+           [HiddenInput(DisplayValue = false)]
+        public DateTimeOffset CreatedUtc { get; set; }
 
           //get list id and name
           public override string ToString()
@@ -40,6 +39,6 @@ namespace ShoppingList_Team2_Master.Models
                return $"[{ListId} {Name}";
           }
 
-          public ListModel List { get; set; }
+        public ListModel List { get; set; }
      }
 }
