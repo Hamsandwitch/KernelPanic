@@ -11,11 +11,14 @@ namespace ShoppingList_Team2_Master.Models
         public string UserId { get; set; }
 
         public string Name { get; set; }
-        
-        [Display(Name = "Color (Hexadecimal)")]
+
         public string Color { get; set; }
 
+<<<<<<< HEAD
         [Display (Name = "Time of Creation")]
+=======
+        [Display(Name = "Time of Creation")]        
+>>>>>>> master
         public DateTimeOffset CreatedUtc { get; set; }
 
         [Display(Name = "Last Modified")]

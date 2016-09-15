@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<ShoppingList_Team2_Master.Models.ShoppingListItemModel>
 
 @{
+<<<<<<< HEAD
     ViewBag.Title = "Index";
+=======
+    ViewBag.Title = "Items";
+>>>>>>> master
 }
 
 <h2>Index</h2>
@@ -10,7 +14,12 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
+<<<<<<< HEAD
     <tr>       
+=======
+    <tr>
+        
+>>>>>>> master
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -26,7 +35,12 @@
     </tr>
 
 @foreach (var item in Model) {
+<<<<<<< HEAD
     <tr>        
+=======
+    <tr>
+        
+>>>>>>> master
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -37,7 +51,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Note)
         </td>
+<<<<<<< HEAD
        
+=======
+        
+>>>>>>> master
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |

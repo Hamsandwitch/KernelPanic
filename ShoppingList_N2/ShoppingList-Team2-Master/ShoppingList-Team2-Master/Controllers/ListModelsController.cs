@@ -49,9 +49,9 @@ namespace ShoppingList_Team2_Master.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Color")] ListModel listModel)
         {
-            
             if (ModelState.IsValid)
             {
+                //Collin's code
                 listModel.UserId = User.Identity.GetUserId();
                 listModel.CreatedUtc = DateTime.UtcNow;
                 listModel.ModifiedUtc = DateTime.UtcNow;
@@ -87,6 +87,7 @@ namespace ShoppingList_Team2_Master.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Collin's code
                 listModel.UserId = User.Identity.GetUserId();
                 listModel.ModifiedUtc = DateTime.UtcNow;
                 db.Entry(listModel).State = EntityState.Modified;

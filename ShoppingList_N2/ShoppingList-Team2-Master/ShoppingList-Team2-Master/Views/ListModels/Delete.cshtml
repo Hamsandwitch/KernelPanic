@@ -8,10 +8,20 @@
 {
     <h2>Deleting: Shopping List</h2>
 
+<<<<<<< HEAD
     <h3>Are you sure you want to delete this Shopping List?</h3>
     <div>
         <hr/>
         <dl class="dl-horizontal">
+=======
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+
+
+>>>>>>> master
             <dt>
                 @Html.DisplayNameFor(model => model.Name)
             </dt>
@@ -51,7 +61,11 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
+<<<<<<< HEAD
                 <input type="submit" value="Delete" class="btn btn-default"/> |
+=======
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+>>>>>>> master
                 @Html.ActionLink("Back to your shopping lists", "Index")
             </div>
         }
@@ -59,5 +73,9 @@
 }
 else
 {
+<<<<<<< HEAD
     <h2>You do not have permission to view this page</h2>
+=======
+    < h2 > You do not have permission to view this page </ h2 >
+>>>>>>> master
 }
