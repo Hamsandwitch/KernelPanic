@@ -12,15 +12,15 @@ namespace ShoppingList_Team2_Master.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ShoppingListItemModels
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? lId)
         {
-            if (id == null)
+            if (lId == null)
             {
                 ViewBag.ListId = 0;
             }
             else
             {
-                ViewBag.ListId = id;
+                ViewBag.ListId = lId;
             }
             var shoppingListItemModels = db.ShoppingListItemModels.Include(s => s.List);
             return View(shoppingListItemModels.ToList());
