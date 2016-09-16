@@ -10,7 +10,8 @@ using ShoppingList_Team2_Master.Models;
 using Microsoft.AspNet.Identity;
 
 namespace ShoppingList_Team2_Master.Controllers
-{
+{ 
+    
     public class ListModelsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
