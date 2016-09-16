@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HDD Lists</title>
+    <title>Shopping List HDdesigns</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -25,12 +25,15 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>              
+                    <span class="icon-bar"></span> 
+                </button>
+               @if (Request.IsAuthenticated)
+               {
                 @Html.ActionLink("ListModels", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })                
-            </div>
-            <div class="navbar-collapse collapse">
+               }
+                       </div>
+            <div class="container">
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -39,7 +42,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Hidden Dragon Design</p>
+            <p>&copy; @DateTime.Now.Year - Hidden Dragon Designs</p>
         </footer>
     </div>
 
