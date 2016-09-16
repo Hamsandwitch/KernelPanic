@@ -42,9 +42,10 @@ namespace ShoppingList_Team2_Master.Controllers
         }
 
         // GET: ShoppingListItemModels/Create
-        public ActionResult Create()
+        public ActionResult Create(int? ListId)
         {
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+
             return View();
         }
 
@@ -53,14 +54,17 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
-        {            
+        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel, int? ListId)
+        {
+            shoppingListItemModel.ListId = ListId ?? 0;    
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {                
                 db.ShoppingListItemModels.Add(shoppingListItemModel);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                // TODO: Redirect to list details page after other refactoring
+                return RedirectToAction("Index", new { lId = ListId });
             }
 
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId", shoppingListItemModel.ListId);
