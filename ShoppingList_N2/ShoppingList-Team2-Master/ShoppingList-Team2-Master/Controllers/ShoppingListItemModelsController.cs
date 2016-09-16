@@ -57,7 +57,8 @@ namespace ShoppingList_Team2_Master.Controllers
         {            
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
-            {                
+            {
+                ViewBag.ListId = shoppingListItemModel.ListId;
                 db.ShoppingListItemModels.Add(shoppingListItemModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
