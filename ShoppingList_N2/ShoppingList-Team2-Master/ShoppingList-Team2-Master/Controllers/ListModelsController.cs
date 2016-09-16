@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Microsoft.AspNet.Identity;
+using ShoppingList_Team2_Master.Models;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using ShoppingList_Team2_Master.Models;
-using Microsoft.AspNet.Identity;
 
 namespace ShoppingList_Team2_Master.Controllers
 {
@@ -33,6 +30,7 @@ namespace ShoppingList_Team2_Master.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ListId = id;
             return View(listModel);
         }
 
