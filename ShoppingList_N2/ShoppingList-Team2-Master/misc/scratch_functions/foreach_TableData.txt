@@ -1,0 +1,27 @@
+
+    @foreach (var item in Model)
+    {
+        <tr class="notfirst" style="border-bottom: 1px dotted silver;">
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsStarred, new { Id = item.NoteId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUtc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.NoteId })
+                <br />
+                @Html.ActionLink("Details", "Details", new { id = item.NoteId })
+                <br />
+                @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
+                <br />
+            </td>
+        </tr>
+
+    }
