@@ -2,13 +2,11 @@
 @if (Request.IsAuthenticated)
 {
 
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
 
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
 
-
-    {
+        {
         @Html.AntiForgeryToken()
-
         <div class="btn-group">
             <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
                 @("Hello, " + User.Identity.GetUserName() + "!")
@@ -19,10 +17,12 @@
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
         </div>
-    }
+        }
+
 }
 else
 {
+    
     <div class="navbar-right">
         <div class="btn-group">
             <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
@@ -35,6 +35,7 @@ else
             </ul>
         </div>
     </div>
+    
 }
 
 

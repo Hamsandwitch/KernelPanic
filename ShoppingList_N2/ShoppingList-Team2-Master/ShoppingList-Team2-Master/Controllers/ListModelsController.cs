@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Microsoft.AspNet.Identity;
+using ShoppingList_Team2_Master.Models;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using ShoppingList_Team2_Master.Models;
-using Microsoft.AspNet.Identity;
 
 namespace ShoppingList_Team2_Master.Controllers
-{
+{ 
+    
     public class ListModelsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -28,12 +26,14 @@ namespace ShoppingList_Team2_Master.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ListModel listModel = db.ListModels.Find(id);
+            ListModel listModel = db.ListModels.Single(li => li.ID == id); //.Find(id);
+
+            // TODO: Move table from ListItems Index to List Details page & eliminate remove redirect
             if (listModel == null)
             {
                 return HttpNotFound();
             }
-            return View(listModel);
+            return RedirectToAction("Index", "ShoppingListItemModels", new {lId = id});
         }
 
         // GET: ListModels/Create
@@ -52,11 +52,12 @@ namespace ShoppingList_Team2_Master.Controllers
             if (ModelState.IsValid)
             {
                 //Collin's code
+                
                 listModel.UserId = User.Identity.GetUserId();
                 listModel.CreatedUtc = DateTime.UtcNow;
                 listModel.ModifiedUtc = DateTime.UtcNow;
-                db.ListModels.Add(listModel);
-                db.SaveChanges();
+                db.ListModels.Add(listModel);      
+                db.SaveChanges();             
                 return RedirectToAction("Index");
             }
 
