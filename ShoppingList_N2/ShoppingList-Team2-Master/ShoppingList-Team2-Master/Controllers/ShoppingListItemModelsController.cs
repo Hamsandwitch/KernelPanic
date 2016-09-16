@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using ShoppingList_Team2_Master.Models;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using ShoppingList_Team2_Master.Models;
 
 namespace ShoppingList_Team2_Master.Controllers
 {
@@ -15,8 +12,16 @@ namespace ShoppingList_Team2_Master.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ShoppingListItemModels
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            if (id == null)
+            {
+                ViewBag.ListId = 0;
+            }
+            else
+            {
+                ViewBag.ListId = id;
+            }
             var shoppingListItemModels = db.ShoppingListItemModels.Include(s => s.List);
             return View(shoppingListItemModels.ToList());
         }

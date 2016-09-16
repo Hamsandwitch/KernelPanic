@@ -30,8 +30,7 @@ namespace ShoppingList_Team2_Master.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ListId = id;
-            return View(listModel);
+            return RedirectToAction("Index", "ShoppingListItemModels", id);
         }
 
         // GET: ListModels/Create
