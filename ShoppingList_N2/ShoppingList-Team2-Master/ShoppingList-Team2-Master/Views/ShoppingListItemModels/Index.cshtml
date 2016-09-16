@@ -14,7 +14,7 @@
 else
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", "ShoppingListItemModels", new { ListId = ViewBag.ListId }, null)
     </p>
     <table class="table">
         <tr>

@@ -25,7 +25,9 @@ namespace ShoppingList_Team2_Master.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ListModel listModel = db.ListModels.Find(id);
+            ListModel listModel = db.ListModels.Single(li => li.ID == id); //.Find(id);
+
+            // TODO: Move table from ListItems Index to List Details page & eliminate remove redirect
             if (listModel == null)
             {
                 return HttpNotFound();
@@ -49,11 +51,12 @@ namespace ShoppingList_Team2_Master.Controllers
             if (ModelState.IsValid)
             {
                 //Collin's code
+                
                 listModel.UserId = User.Identity.GetUserId();
                 listModel.CreatedUtc = DateTime.UtcNow;
                 listModel.ModifiedUtc = DateTime.UtcNow;
-                db.ListModels.Add(listModel);
-                db.SaveChanges();
+                db.ListModels.Add(listModel);      
+                db.SaveChanges();             
                 return RedirectToAction("Index");
             }
 
