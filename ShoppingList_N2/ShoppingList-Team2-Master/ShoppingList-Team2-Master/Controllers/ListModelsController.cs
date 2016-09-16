@@ -30,7 +30,7 @@ namespace ShoppingList_Team2_Master.Controllers
             {
                 return HttpNotFound();
             }
-            return RedirectToAction("Index", "ShoppingListItemModels", id);
+            return RedirectToAction("Index", "ShoppingListItemModels", new {lId = id});
         }
 
         // GET: ListModels/Create
