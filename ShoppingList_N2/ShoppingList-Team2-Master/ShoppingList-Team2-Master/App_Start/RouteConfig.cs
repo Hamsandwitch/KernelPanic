@@ -13,6 +13,16 @@ namespace ShoppingList_Team2_Master
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "ListItems",
+            //    url: "ListModels/Details/{id}/Items/{listId}",
+            //    defaults: new { controller = "ListModels", action = "ItemDetails" });
+
+            //routes.MapRoute(
+            //    name: "CreateItem",
+            //    url: "ListModels/Details/{id}/Items/Create",
+            //    defaults: new { controller = "ListModels", action = "CreateItem" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
