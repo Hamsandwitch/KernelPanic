@@ -64,7 +64,7 @@ namespace ShoppingList_Team2_Master.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId", shoppingListItemModel.ListId);
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
 
@@ -80,7 +80,7 @@ namespace ShoppingList_Team2_Master.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId", shoppingListItemModel.ListId);
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
 
@@ -98,7 +98,7 @@ namespace ShoppingList_Team2_Master.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId", shoppingListItemModel.ListId);
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
 
