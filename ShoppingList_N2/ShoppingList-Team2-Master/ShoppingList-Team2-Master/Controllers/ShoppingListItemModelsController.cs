@@ -44,7 +44,8 @@ namespace ShoppingList_Team2_Master.Controllers
         // GET: ShoppingListItemModels/Create
         public ActionResult Create(int? ListId)
         {
-            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+            //uncommented this code after Dave's fix to allow creating item for list A. Reid
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
 
             return View();
         }
