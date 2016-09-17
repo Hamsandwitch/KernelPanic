@@ -44,7 +44,7 @@ namespace ShoppingList_Team2_Master.Controllers
         // GET: ShoppingListItemModels/Create
         public ActionResult Create()
         {
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name");
             return View();
         }
 
@@ -54,7 +54,8 @@ namespace ShoppingList_Team2_Master.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
-        {            
+        {
+            
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {                
