@@ -2,6 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
+
 <div class="jumbotron">
     <center><h1>Shopping List</h1></center>
     <p class="lead">Shopping List is an app designed to help you make a shopping list. Bleeding edge dietary organization here!</p>
@@ -10,18 +11,15 @@
    
 </div>
 
-<!-- START PICTURE TAIL
+<!--START PICTURE TAIL-->
+
 <div class="row">
     <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <center>
-                <h2>Coming Soon!</h2>
-                <p>
-                    While still in early development, we are working hard to bring you the features you want!
-                </p>
-            </center>
-        </div>
+    <div class="col-md-4">
+        @Html.Partial("_LoginPartial")
+    </div>
 </div>
+
 <!-- END PICTURE TAIL-->
 <br />
 <br />
