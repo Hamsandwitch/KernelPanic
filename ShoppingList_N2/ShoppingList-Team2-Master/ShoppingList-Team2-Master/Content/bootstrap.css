@@ -97,6 +97,9 @@ img {
 svg:not(:root) {
   overflow: hidden;
 }
+
+tr:nth-child(odd)    { background-color:#FFFFFF; }
+tr:nth-child(even)   { background-color:#D4F2A7; }
 figure {
   margin: 1em 40px;
 }
@@ -3267,6 +3270,7 @@ fieldset[disabled] .btn-success.focus {
   background-color: #17759c;
   border-color: rgba(0, 0, 0, 0);
 }
+
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
