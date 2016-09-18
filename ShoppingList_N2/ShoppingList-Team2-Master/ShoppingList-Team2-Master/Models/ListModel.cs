@@ -25,8 +25,7 @@ namespace ShoppingList_Team2_Master.Models
         {
             return $"[{ID} {Name}";
         }
+
         public virtual ICollection<ShoppingListItemModel> ShoppingListItems { get; set; }
     }
-
-    
 }

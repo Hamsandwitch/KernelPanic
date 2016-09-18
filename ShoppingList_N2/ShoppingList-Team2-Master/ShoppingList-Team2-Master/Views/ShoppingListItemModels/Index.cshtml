@@ -14,7 +14,7 @@
 else
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", "ShoppingListItemModels", new { ListId = ViewBag.ListId }, null)
     </p>
     <table class="table">
         <tr>
@@ -61,13 +61,15 @@ else
                     </td>
 
                     <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                         @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
-                        @Html.ActionLink("Details", "Details", new {id = item.ID}) |
                         @Html.ActionLink("Delete", "Delete", new {id = item.ID})
                     </td>
                 </tr>
             }
         }
-
-    </table>
+        </table>
 }
+<div>
+    @Html.ActionLink("Back to Lists", "Index", "ListModels")
+</div>
