@@ -75,7 +75,7 @@ namespace ShoppingList_Team2_Master.Controllers
                 db.SaveChanges();
 
                 // TODO: Redirect to list details page after other refactoring
-                return RedirectToAction("Index", new { lId = ListId });
+                return RedirectToAction("Index");
             }
 
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
