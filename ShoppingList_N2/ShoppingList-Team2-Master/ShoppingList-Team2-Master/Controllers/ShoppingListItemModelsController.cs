@@ -4,14 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-
 namespace ShoppingList_Team2_Master.Controllers
 {
     [Authorize]
     public class ShoppingListItemModelsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: ShoppingListItemModels
         public ActionResult Index(int? lId)
         {
@@ -26,7 +24,6 @@ namespace ShoppingList_Team2_Master.Controllers
             var shoppingListItemModels = db.ShoppingListItemModels.Include(s => s.List);
             return View(shoppingListItemModels.ToList());
         }
-
         // GET: ShoppingListItemModels/Details/5
         public ActionResult Details(int? id)
         {
@@ -41,47 +38,32 @@ namespace ShoppingList_Team2_Master.Controllers
             }
             return View(shoppingListItemModel);
         }
-
         // GET: ShoppingListItemModels/Create
         public ActionResult Create(int? ListId)
         {
-
-            //uncommented this code after Dave's fix to allow creating item for list A. Reid
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
-
-            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+            //TODO: REFACTOR LOGIC TO ONLY DISPLAY THE AUTHORIZED USER'S LISTS - NOT ALL LISTS.
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name");
             return View();
         }
-
         // POST: ShoppingListItemModels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel, int? ListId)
-        //{
-        //    shoppingListItemModel.ListId = ListId ?? 0;
-        //}
-
         public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
         {
-            
+
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {
-                ViewBag.ListId = shoppingListItemModel.ListId;
                 db.ShoppingListItemModels.Add(shoppingListItemModel);
                 db.SaveChanges();
-
                 // TODO: Redirect to list details page after other refactoring
-                return RedirectToAction("Index", new { lId = ListId });
+                return RedirectToAction("Index");
             }
-
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
-
         // GET: ShoppingListItemModels/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -97,14 +79,13 @@ namespace ShoppingList_Team2_Master.Controllers
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
-
         // POST: ShoppingListItemModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
-        {           
+        {
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {
@@ -115,7 +96,6 @@ namespace ShoppingList_Team2_Master.Controllers
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
-
         // GET: ShoppingListItemModels/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -130,7 +110,6 @@ namespace ShoppingList_Team2_Master.Controllers
             }
             return View(shoppingListItemModel);
         }
-
         // POST: ShoppingListItemModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -141,7 +120,6 @@ namespace ShoppingList_Team2_Master.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
