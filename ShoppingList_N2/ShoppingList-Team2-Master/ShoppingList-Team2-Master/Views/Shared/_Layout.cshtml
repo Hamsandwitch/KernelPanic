@@ -29,6 +29,7 @@
                     </button>
                     @if (Request.IsAuthenticated)
                     {
+
                         @Html.ActionLink("Shopping List", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
                         @*@Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })*@
                     }
