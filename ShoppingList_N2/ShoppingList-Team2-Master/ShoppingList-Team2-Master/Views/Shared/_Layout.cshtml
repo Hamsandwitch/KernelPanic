@@ -29,8 +29,13 @@
                     </button>
                     @if (Request.IsAuthenticated)
                     {
+<<<<<<< HEAD
                         @Html.ActionLink("ListModels", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
                        @* @Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })*@
+=======
+                        @Html.ActionLink("Shopping List", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
+                        @*@Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })*@
+>>>>>>> refs/remotes/origin/DevelopMaster
                     }
                 </div>
                 <div class="container">
@@ -42,7 +47,7 @@
             @RenderBody()
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - Hidden Dragon Designs</p>
+                <p>&copy; @DateTime.Now.Year - @Html.ActionLink("Hidden Dragon Designs", "About", "Home")</p>
             </footer>
         </div>
 

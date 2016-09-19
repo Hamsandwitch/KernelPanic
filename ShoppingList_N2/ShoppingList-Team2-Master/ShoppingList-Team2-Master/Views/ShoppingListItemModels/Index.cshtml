@@ -23,9 +23,6 @@ else
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsChecked)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Purchased)
             </th>
             <th>
@@ -48,9 +45,6 @@ else
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IsChecked)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Purchased)
                     </td>
                     <td>
@@ -61,13 +55,15 @@ else
                     </td>
 
                     <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                         @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
-                        @Html.ActionLink("Details", "Details", new {id = item.ID}) |
                         @Html.ActionLink("Delete", "Delete", new {id = item.ID})
                     </td>
                 </tr>
             }
         }
-
-    </table>
+        </table>
 }
+<div>
+    @Html.ActionLink("Back to Lists", "Index", "ListModels")
+</div>
