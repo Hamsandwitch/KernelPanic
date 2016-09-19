@@ -29,7 +29,7 @@ namespace ShoppingList_Team2_Master.Models
 
           public string Note { get; set; }
           
-        [Display(Name = "Time of Creation")]
+          [Display(Name = "Time of Creation")]
           public DateTimeOffset CreatedUtc { get; set; }
 
           //get list id and name

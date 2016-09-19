@@ -45,12 +45,12 @@ namespace ShoppingList_Team2_Master.Controllers
         // GET: ShoppingListItemModels/Create
         public ActionResult Create(int? ListId)
         {
-<<<<<<< HEAD
-            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
 
-=======
+            //TODO: REFACTOR LOGIC TO ONLY DISPLAY THE AUTHORIZED USER'S LISTS - NOT ALL LISTS.
+
+
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name");
->>>>>>> refs/remotes/origin/master
+
             return View();
         }
 
@@ -59,15 +59,13 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-<<<<<<< HEAD
-        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel, int? ListId)
-        {
-            shoppingListItemModel.ListId = ListId ?? 0;    
-=======
+
+
+
         public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
         {
             
->>>>>>> refs/remotes/origin/master
+
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {                
@@ -75,7 +73,7 @@ namespace ShoppingList_Team2_Master.Controllers
                 db.SaveChanges();
 
                 // TODO: Redirect to list details page after other refactoring
-                return RedirectToAction("Index", new { lId = ListId });
+                return RedirectToAction("Index");
             }
 
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
