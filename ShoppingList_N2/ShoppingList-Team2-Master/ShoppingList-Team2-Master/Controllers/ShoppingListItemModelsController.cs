@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ShoppingList_Team2_Master.Controllers
 {
+    [Authorize]
     public class ShoppingListItemModelsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -44,7 +45,11 @@ namespace ShoppingList_Team2_Master.Controllers
         // GET: ShoppingListItemModels/Create
         public ActionResult Create(int? ListId)
         {
-            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+
+            //TODO: REFACTOR LOGIC TO ONLY DISPLAY THE AUTHORIZED USER'S LISTS - NOT ALL LISTS.
+
+
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name");
 
             return View();
         }
@@ -54,9 +59,13 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel, int? ListId)
+
+
+
+        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
         {
-            shoppingListItemModel.ListId = ListId ?? 0;    
+            
+
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {                
@@ -64,10 +73,10 @@ namespace ShoppingList_Team2_Master.Controllers
                 db.SaveChanges();
 
                 // TODO: Redirect to list details page after other refactoring
-                return RedirectToAction("Index", new { lId = ListId });
+                return RedirectToAction("Index");
             }
 
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId", shoppingListItemModel.ListId);
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
 
@@ -83,7 +92,7 @@ namespace ShoppingList_Team2_Master.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId", shoppingListItemModel.ListId);
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
 
@@ -101,7 +110,7 @@ namespace ShoppingList_Team2_Master.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId", shoppingListItemModel.ListId);
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
             return View(shoppingListItemModel);
         }
 

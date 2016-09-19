@@ -18,8 +18,15 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
+  padding-top: 50px;
+  padding-bottom: 20px;
   margin: 0;
 }
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 article,
 aside,
 details,
@@ -97,6 +104,9 @@ img {
 svg:not(:root) {
   overflow: hidden;
 }
+
+tr:nth-child(odd)    { background-color:#FFFFFF; }
+tr:nth-child(even)   { background-color:#D4F2A7; }
 figure {
   margin: 1em 40px;
 }
@@ -121,6 +131,7 @@ input,
 optgroup,
 select,
 textarea {
+  max-width: 280px;
   color: inherit;
   font: inherit;
   margin: 0;
@@ -1463,7 +1474,7 @@ dd {
     text-align: right;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
   }
   .dl-horizontal dd {
     margin-left: 180px;
@@ -3267,6 +3278,7 @@ fieldset[disabled] .btn-success.focus {
   background-color: #17759c;
   border-color: rgba(0, 0, 0, 0);
 }
+
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
