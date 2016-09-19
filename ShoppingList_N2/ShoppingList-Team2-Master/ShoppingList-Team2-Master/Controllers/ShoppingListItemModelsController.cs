@@ -46,7 +46,12 @@ namespace ShoppingList_Team2_Master.Controllers
         public ActionResult Create(int? ListId)
         {
 <<<<<<< HEAD
+            //uncommented this code after Dave's fix to allow creating item for list A. Reid
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+=======
+<<<<<<< HEAD
             //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
+>>>>>>> refs/remotes/origin/DevelopMaster
 
 =======
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name");
@@ -70,7 +75,8 @@ namespace ShoppingList_Team2_Master.Controllers
 >>>>>>> refs/remotes/origin/master
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
-            {                
+            {
+                ViewBag.ListId = shoppingListItemModel.ListId;
                 db.ShoppingListItemModels.Add(shoppingListItemModel);
                 db.SaveChanges();
 

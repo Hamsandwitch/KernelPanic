@@ -29,8 +29,13 @@
                     </button>
                     @if (Request.IsAuthenticated)
                     {
+<<<<<<< HEAD
+                        @Html.ActionLink("ListModels", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
+                       @* @Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })*@
+=======
                         @Html.ActionLink("Shopping List", "Index", "ListModels", new { area = "" }, new { @class = "navbar-brand" })
                         @*@Html.ActionLink("ShopListImod", "Index", "ShoppingListItemModels", new { area = "" }, new { @class = "navbar-brand" })*@
+>>>>>>> refs/remotes/origin/DevelopMaster
                     }
                 </div>
                 <div class="container">
