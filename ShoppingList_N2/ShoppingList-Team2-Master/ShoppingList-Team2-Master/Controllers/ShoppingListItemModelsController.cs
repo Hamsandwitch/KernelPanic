@@ -46,11 +46,11 @@ namespace ShoppingList_Team2_Master.Controllers
         public ActionResult Create(int? ListId)
         {
 
-            //TODO: REFACTOR LOGIC TO ONLY DISPLAY THE AUTHORIZED USER'S LISTS - NOT ALL LISTS.
+            //uncommented this code after Dave's fix to allow creating item for list A. Reid
+            ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
 
-
+            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name");
-
             return View();
         }
 
@@ -59,21 +59,23 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-
+        //public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel, int? ListId)
+        //{
+        //    shoppingListItemModel.ListId = ListId ?? 0;
+        //}
 
         public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
         {
             
-
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
-            {                
+            {
+                ViewBag.ListId = shoppingListItemModel.ListId;
                 db.ShoppingListItemModels.Add(shoppingListItemModel);
                 db.SaveChanges();
 
                 // TODO: Redirect to list details page after other refactoring
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { lId = ListId });
             }
 
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name", shoppingListItemModel.ListId);
