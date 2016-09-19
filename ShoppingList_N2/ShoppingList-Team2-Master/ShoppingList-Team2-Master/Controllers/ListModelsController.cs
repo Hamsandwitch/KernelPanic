@@ -7,7 +7,8 @@ using System.Net;
 using System.Web.Mvc;
 
 namespace ShoppingList_Team2_Master.Controllers
-{
+{ 
+    
     public class ListModelsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
