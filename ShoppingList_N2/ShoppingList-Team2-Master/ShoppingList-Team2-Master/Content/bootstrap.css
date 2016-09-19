@@ -18,8 +18,15 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
+  padding-top: 50px;
+  padding-bottom: 20px;
   margin: 0;
 }
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 article,
 aside,
 details,
@@ -124,6 +131,7 @@ input,
 optgroup,
 select,
 textarea {
+  max-width: 280px;
   color: inherit;
   font: inherit;
   margin: 0;
@@ -1466,7 +1474,7 @@ dd {
     text-align: right;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
   }
   .dl-horizontal dd {
     margin-left: 180px;
