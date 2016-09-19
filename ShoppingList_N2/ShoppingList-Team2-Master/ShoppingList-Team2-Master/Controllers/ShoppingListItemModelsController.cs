@@ -45,17 +45,12 @@ namespace ShoppingList_Team2_Master.Controllers
         // GET: ShoppingListItemModels/Create
         public ActionResult Create(int? ListId)
         {
-<<<<<<< HEAD
+
             //uncommented this code after Dave's fix to allow creating item for list A. Reid
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
-=======
-<<<<<<< HEAD
-            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
->>>>>>> refs/remotes/origin/DevelopMaster
 
-=======
+            //ViewBag.ListId = new SelectList(db.ListModels, "ID", "UserId");
             ViewBag.ListId = new SelectList(db.ListModels, "ID", "Name");
->>>>>>> refs/remotes/origin/master
             return View();
         }
 
@@ -64,15 +59,14 @@ namespace ShoppingList_Team2_Master.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-<<<<<<< HEAD
-        public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel, int? ListId)
-        {
-            shoppingListItemModel.ListId = ListId ?? 0;    
-=======
+        //public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel, int? ListId)
+        //{
+        //    shoppingListItemModel.ListId = ListId ?? 0;
+        //}
+
         public ActionResult Create([Bind(Include = "ID,ListId,Name,IsChecked,Purchased,Priority,Note")] ShoppingListItemModel shoppingListItemModel)
         {
             
->>>>>>> refs/remotes/origin/master
             shoppingListItemModel.CreatedUtc = DateTime.UtcNow;
             if (ModelState.IsValid)
             {
